@@ -33,7 +33,9 @@ export const ReadingBlock: React.FC<ReadingBlockProps> = ({
   const pageId = useMemo(() => {
     if (!book || !chapters || !book.chapters![0]) return 1;
     const chapter = chapters?.find((ch) => ch.id === book.chapters![0].id);
-    return chapter && chapter.pages && chapter.pages[0].id ? chapter.pages[0].id : 1;
+    return chapter && chapter.pages && chapter.pages[0] && chapter.pages[0].id
+      ? chapter.pages[0].id
+      : 1;
   }, [chapters, book]);
 
   const handleAddBookmark = () => {
