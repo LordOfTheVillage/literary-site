@@ -66,6 +66,10 @@ export const AccountAddChapter = () => {
               value: 2500,
               message: ErrorInputMessages.TEXT_LENGTH,
             },
+            minLength: {
+              value: 100,
+              message: ErrorInputMessages.TEXT_MIN_LENGTH,
+            },
           }),
         }}
         name={InputNames.TEXT}
