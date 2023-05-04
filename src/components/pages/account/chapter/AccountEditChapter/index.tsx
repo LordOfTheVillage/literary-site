@@ -63,6 +63,7 @@ export const AccountEditChapter = () => {
         value={getChapterText(chapter)}
         properties={{
           ...register(InputNames.TEXT, {
+            required: ErrorInputMessages.REQUIRED,
             maxLength: {
               value: 2500,
               message: ErrorInputMessages.TEXT_LENGTH,

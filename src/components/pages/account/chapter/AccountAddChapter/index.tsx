@@ -62,6 +62,7 @@ export const AccountAddChapter = () => {
         placeholder="Содержание главы"
         properties={{
           ...register(InputNames.TEXT, {
+            required: ErrorInputMessages.REQUIRED,
             maxLength: {
               value: 2500,
               message: ErrorInputMessages.TEXT_LENGTH,
