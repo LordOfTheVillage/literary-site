@@ -18,7 +18,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
     <ElementWrapper
       className={`ml-5 hidden max-h-full self-start sm:hidden md:flex md:w-60 md:flex-col md:gap-y-6 lg:flex lg:w-full ${className}`}
     >
-      <h2 className=" text-xl">Литнет рекомендует</h2>
+      <h2 className=" text-xl">Белобрпромагротехлиб рекомендует</h2>
       {booksByReadings.map((book, index) => (
         <SidebarElement key={index} book={book} />
       ))}
