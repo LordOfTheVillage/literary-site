@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, ChangeEvent } from "react";
 import { PageWrapper } from "../../../ui/wrappers/PageWrapper";
 import { BlogElement } from "../../../modules/elements/BlogElement";
 import { Wrapper } from "../../../ui/wrappers/Wrapper";
@@ -11,9 +11,11 @@ import {
   getOffset,
   getPageCount,
 } from "../../../../utils/pageUtils";
+import { Input } from "../../../ui/inputs/Input";
 
 export const Blogs = () => {
   const [currentPage, setCurrentPage] = useState(0);
+  const [search, setSearch] = useState<string>("");
   const params = useMemo(
     () => ({
       limit: PageConfig.LIMIT,
@@ -21,20 +23,35 @@ export const Blogs = () => {
     }),
     [currentPage]
   );
-  const { blogs, count, refetch, isLoading } = useBlogs(params);
+  const { blogs, count, refetch, isLoading } = useBlogs({
+    search,
+    ...params,
+  });
 
   const handlePageClick = ({ selected: selectedPage }) => {
     setCurrentPage(selectedPage);
   };
 
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(`${e.target.value}`);
+  };
+
   useEffect(() => {
     refetch();
-  }, [params]);
+  }, [params, search]);
 
   return (
     <Wrapper className="flex items-start">
       {blogs ? (
         <PageWrapper title="Литературные блоги" isTop={true}>
+          <div className="">
+            <h2 className="mb-3 text-xl">Введите название блога</h2>
+            <Input
+              type="text"
+              placeholder="Поиск блога"
+              onChange={handleSearch}
+            ></Input>
+          </div>
           {blogs.length ? (
             <>
               {blogs.map((blog) => (

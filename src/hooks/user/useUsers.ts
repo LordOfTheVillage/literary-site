@@ -13,17 +13,7 @@ import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../components/context/userContext";
 import { Router } from "../../components/router";
-
-let timeoutId;
-
-const debounce = (func: any, delay: number) => {
-  return (...args: any) => {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-      func(...args);
-    }, delay);
-  };
-};
+import { useDebounce } from "../useDebounce";
 
 const createCustomFormData = ({ readingView, ...data }): any => {
   const formData = createFormDataWithImage(data);
@@ -76,7 +66,7 @@ export const useUsers = (params: QueryParams = {}, delay = 1000) => {
     },
   });
 
-  const refetch = debounce(originalRefetch, delay);
+  const refetch = useDebounce(originalRefetch, delay);
 
   return {
     users: data?.rows,

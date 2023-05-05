@@ -7,7 +7,11 @@ import { AxiosError } from "axios";
 import { ErrorNotifies, SuccessNotifies } from "../../utils/formUtils";
 
 export const useBooks = (params: QueryParams = {}) => {
-  const { data, refetch, ...props } = useQuery<BookListType>({
+  const {
+    data,
+    refetch,
+    ...props
+  } = useQuery<BookListType>({
     queryKey: ["books", params],
     staleTime: 0,
     queryFn: async () => API.getBooks(params),
