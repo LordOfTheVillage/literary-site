@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { DetailsElement } from "../DetailsElement";
 import { handleImageError } from "../../../../utils/utils";
 import avatar from "../../../../common/assets/images/avatar.png";
+import { Router } from "../../../router";
 
 type ContestElementProps = {
   id: string;
@@ -67,12 +68,13 @@ export const ContestElement: React.FC<ContestElementProps> = ({
             />
           </div>
           <div className="mt-4 flex gap-4 sm:mt-auto">
-            <Link to="1">
-              <Button onClick={() => navigate(`${id}`)}>
-                Перейти к работам
-              </Button>
-            </Link>
-            <Button type="secondary" onClick={() => navigate(`${id}/rules`)}>
+            <Button onClick={() => navigate(`${Router.contests}/${id}`)}>
+              Перейти к работам
+            </Button>
+            <Button
+              type="secondary"
+              onClick={() => navigate(`${Router.contests}/${id}/rules`)}
+            >
               Правила конкурса
             </Button>
           </div>

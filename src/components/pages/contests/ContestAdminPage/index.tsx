@@ -13,7 +13,7 @@ import { Router } from "../../../router";
 
 export const ContestAdminPage = () => {
   const { id } = useParams();
-  const { contest } = useContest(id!);
+  const { contest } = useContest({ contestId: id });
   const [moderatorModalIsOpen, setModeratorModalIsOpen] = useState(false);
   const [winnerModalIsOpen, setWinnerModalIsOpen] = useState(false);
   const { moderators, count, addModerator, removeModerator } = useModerators(

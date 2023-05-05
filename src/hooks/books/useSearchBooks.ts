@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { QueryParams } from "../../types/api.types";
 import { BookListType } from "../../types/list.types";
 import { API } from "../../api/api";
-import { useState } from "react";
 import { useDebounce } from "../useDebounce";
 
 export const useSearchBooks = (params: QueryParams = {}, delay = 1000) => {
@@ -15,7 +14,7 @@ export const useSearchBooks = (params: QueryParams = {}, delay = 1000) => {
     staleTime: 0,
     queryFn: async () => API.getBooks(params),
   });
-  
+
   const refetch = useDebounce(originalRefetch, delay);
 
   return {

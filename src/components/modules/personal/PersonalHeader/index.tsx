@@ -66,6 +66,16 @@ export const PersonalHeader = ({ account }: PersonalHeaderProps) => {
           Блог
         </Button>
         <Button
+          onClick={() => {
+            setSelectedButton(Router.contest);
+            navigate(Router.contest);
+          }}
+          type="secondary"
+          className={`${Router.contest === selectedButton ? DEFAULT_STYLE : ""}`}
+        >
+          Конкурс
+        </Button>
+        <Button
           type="secondary"
           onClick={() => {
             setSelectedButton(Router.about);

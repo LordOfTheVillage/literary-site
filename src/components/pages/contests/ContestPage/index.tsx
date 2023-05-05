@@ -16,7 +16,7 @@ export type ContestContextType = {
 
 export const ContestPage = () => {
   const { id } = useParams<Params>();
-  const { contest, isLoading } = useContest(id!);
+  const { contest, isLoading } = useContest({ contestId: id });
   return (
     <Wrapper>
       <PageWrapper isTop={true}>

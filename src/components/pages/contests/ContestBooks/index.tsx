@@ -12,7 +12,7 @@ type Params = {
 
 export const ContestBooks = () => {
   const { id } = useParams<Params>();
-  const { contest, isLoading } = useContest(id!);
+  const { contest, isLoading } = useContest({ contestId: id });
   const { user } = useUserContext();
 
   return (

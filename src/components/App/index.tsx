@@ -45,6 +45,7 @@ import { OwnerProtectedRoute } from "../security/OwnerProtectedRoute";
 import { ModerationProtectedRoute } from "../security/ModerationProtectedRoute";
 import { UserProtectedRoute } from "../security/UserProtectedRoute";
 import { AdminProtectedRoute } from "../security/AdminProtectedRoute";
+import { PersonalContest } from "../pages/account/personal/PersonalContest";
 
 const client = new QueryClient({
   logger: {
@@ -172,6 +173,10 @@ const router = createBrowserRouter([
           {
             path: "books",
             element: <PersonalBooks />,
+          },
+          {
+            path: "contest",
+            element: <PersonalContest />,
           },
         ],
       },

@@ -14,7 +14,7 @@ type Params = {
 
 export const ContestModerationPage = () => {
   const { id } = useParams<Params>();
-  const { contest, isLoading } = useContest(id!);
+  const { contest, isLoading } = useContest({ contestId: id });
   const { user } = useUserContext();
   const { applications, updateApplication, removeApplication } =
     useApplications(id!, { disabled: false });
@@ -33,7 +33,7 @@ export const ContestModerationPage = () => {
               {+contest.userId === +user!.id && (
                 <PrimaryLink
                   className=" ml-5"
-                  path={`${Router.contest}/${id}/admin`}
+                  path={`${Router.contests}/${id}/admin`}
                 >
                   Параметры конкурса
                 </PrimaryLink>
@@ -44,7 +44,7 @@ export const ContestModerationPage = () => {
                 )) && (
                 <PrimaryLink
                   className=" items-end"
-                  path={`${Router.contest}/${id}/moderation`}
+                  path={`${Router.contests}/${id}/moderation`}
                 >
                   Модерация книг
                 </PrimaryLink>

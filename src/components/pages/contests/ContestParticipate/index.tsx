@@ -10,7 +10,7 @@ import { useContest } from "../../../../hooks/contests/useContest";
 export const ContestParticipate = () => {
   const { id } = useParams();
   const { user } = useUserContext();
-  const { contest } = useContest(id!);
+  const { contest } = useContest({ contestId: id });
   const { data: books, isLoading } = useQuery<BookListType>({
     queryFn: () => API.getBooksByUserId(user!.id.toString()),
     enabled: !!user,
@@ -22,7 +22,8 @@ export const ContestParticipate = () => {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {books.rows
             .filter(
-              (b) => !contest.contestApplications.find((a) => +a.bookId === b.id)
+              (b) =>
+                !contest.contestApplications.find((a) => +a.bookId === b.id)
             )
             .map((book, i) => (
               <ContestBook

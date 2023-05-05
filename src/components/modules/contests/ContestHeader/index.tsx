@@ -22,7 +22,7 @@ export const ContestHeader: React.FC<ContestHeaderProps> = ({ id, back }) => {
   ) {
     back = true;
   }
-  const { contest, isLoading } = useContest(id);
+  const { contest, isLoading } = useContest({ contestId: id });
   return (
     <>
       {contest ? (
@@ -44,7 +44,7 @@ export const ContestHeader: React.FC<ContestHeaderProps> = ({ id, back }) => {
               {back ? (
                 <Button
                   className=""
-                  onClick={() => navigate(`${Router.contest}/${id}`)}
+                  onClick={() => navigate(`${Router.contests}/${id}`)}
                 >
                   К работам
                 </Button>

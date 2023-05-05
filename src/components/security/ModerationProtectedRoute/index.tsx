@@ -14,7 +14,7 @@ export const ModerationProtectedRoute: FC<ModerationProtectedRouteProps> = ({
 }) => {
   const { user } = useUserContext();
   const { id: contestId } = useParams();
-  const { contest, isLoading } = useContest(`${contestId}`);
+  const { contest, isLoading } = useContest({ contestId });
 
   if (isLoading) return <Spinner />;
 

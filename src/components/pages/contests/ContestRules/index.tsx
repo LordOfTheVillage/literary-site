@@ -14,7 +14,7 @@ import { GenreType } from "../../../../types/types";
 
 export const ContestRules = () => {
   const { id } = useParams();
-  const { contest } = useContest(id!);
+  const { contest } = useContest({ contestId: id });
   const { comments, isLoading: commentsLoading } = useComments(
     CommentTypes.CONTEST,
     id!,
