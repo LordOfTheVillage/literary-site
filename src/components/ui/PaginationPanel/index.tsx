@@ -13,7 +13,7 @@ export const PaginationPanel: FC<PaginationPanelProps> = ({
   currentPage,
 }) => {
   return (
-    <div className="flex w-full justify-center border-b-2 border-t-2  p-3">
+    <div className="mt-5 flex w-full justify-center border-b-2 border-t-2  p-3">
       <ReactPaginate
         previousLabel={"←"}
         nextLabel={"→"}

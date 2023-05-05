@@ -103,6 +103,14 @@ export interface UserType {
   bookmarks: BookmarkType[];
   img: string | null;
   role: RoleType;
+  producerApplication: null | ProducerApplicationType;
+}
+
+export interface ProducerApplicationType {
+  id: number;
+  userId: number;
+  text: string;
+  user: UserType;
 }
 
 export interface RoleType {
@@ -126,7 +134,7 @@ export interface AccountType extends UserType {
   updatedAt: string;
   contestId?: number | null;
   contest?: ContestType | null;
-  role: RoleType
+  role: RoleType;
   blogs?: BlogType[];
   ratings?: RatingType[];
   bookComments?: BookCommentType[];

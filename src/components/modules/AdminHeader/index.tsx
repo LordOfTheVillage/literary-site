@@ -15,6 +15,10 @@ const navItems = [
     title: "Книги",
     link: "books",
   },
+  {
+    title: "Заявки",
+    link: "applications",
+  },
 ];
 
 export const AdminHeader = () => {

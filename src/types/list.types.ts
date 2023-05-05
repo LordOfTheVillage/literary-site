@@ -10,6 +10,7 @@ import {
   ContestType,
   GenreType,
   ModerationType,
+  ProducerApplicationType,
   RatingType,
   UserType,
   WinnerType,
@@ -42,6 +43,11 @@ export interface WinnerListType {
 
 export interface ApplicationListType {
   rows: ApplicationType[];
+  count: number;
+}
+
+export interface ProducerApplicationListType {
+  rows: ProducerApplicationType[];
   count: number;
 }
 

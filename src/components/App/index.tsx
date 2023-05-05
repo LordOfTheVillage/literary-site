@@ -46,6 +46,8 @@ import { ModerationProtectedRoute } from "../security/ModerationProtectedRoute";
 import { UserProtectedRoute } from "../security/UserProtectedRoute";
 import { AdminProtectedRoute } from "../security/AdminProtectedRoute";
 import { PersonalContest } from "../pages/account/personal/PersonalContest";
+import { ProducerProtectedRoute } from "../security/ProducerProtectedRoute";
+import { AdminApplicationsPage } from "../pages/admin/AdminApplicationsPage";
 
 const client = new QueryClient({
   logger: {
@@ -70,8 +72,12 @@ const router = createBrowserRouter([
         element: <AdminHomePage />,
       },
       {
-        path: "books/",
+        path: "books",
         element: <AdminBooksPage />,
+      },
+      {
+        path: "applications",
+        element: <AdminApplicationsPage />,
       },
     ],
   },
@@ -214,7 +220,11 @@ const router = createBrowserRouter([
           },
           {
             path: "add-contest",
-            element: <AccountAddContest />,
+            element: (
+              <ProducerProtectedRoute>
+                <AccountAddContest />
+              </ProducerProtectedRoute>
+            ),
           },
           {
             path: "book/:bookId",

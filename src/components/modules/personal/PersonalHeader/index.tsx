@@ -31,18 +31,30 @@ export const PersonalHeader = ({ account }: PersonalHeaderProps) => {
 
   return (
     <Wrapper className="mb-10 flex h-72 w-full flex-col justify-between rounded-md bg-slate-100 p-4 pt-24 sm:pt-24">
-      <div className="flex w-full gap-x-5">
-        <img
-          src={processImage(account.img)}
-          alt=""
-          className="h-32 w-32 rounded border object-cover"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = avatar;
-          }}
-        />
-        <h3 className="flex items-center text-lg text-gray-900">
-          {account.name}
-        </h3>
+      <div className="flex items-start">
+        <div className="flex w-full gap-x-5">
+          <img
+            src={processImage(account.img)}
+            alt=""
+            className="h-32 w-32 rounded border object-cover"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = avatar;
+            }}
+          />
+          <h3 className="flex items-center text-lg text-gray-900">
+            {account.name}
+          </h3>
+        </div>
+        {account.role.value === "PRODUCER" && (
+          <div className=" rounded-3xl border-2 border-indigo-400 bg-indigo-400 p-2  align-baseline font-medium text-white">
+            ПРОДЮСЕР
+          </div>
+        )}
+        {account.role.value === "ADMIN" && (
+          <div className=" rounded-3xl border-2 border-indigo-400 bg-indigo-400 p-2  align-baseline font-medium text-white">
+            АДМИНИСТРАТОР
+          </div>
+        )}
       </div>
       <div className="flex w-full flex-wrap gap-2 ">
         <Button
@@ -71,7 +83,9 @@ export const PersonalHeader = ({ account }: PersonalHeaderProps) => {
             navigate(Router.contest);
           }}
           type="secondary"
-          className={`${Router.contest === selectedButton ? DEFAULT_STYLE : ""}`}
+          className={`${
+            Router.contest === selectedButton ? DEFAULT_STYLE : ""
+          }`}
         >
           Конкурс
         </Button>

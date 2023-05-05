@@ -46,6 +46,9 @@ export enum API_URLS {
   CONTEST_WINNER = "/contest/:id/winner",
   MODERATOR = "/contest/:contestId/moderation/:id",
   MODERATORS_BY_CONTEST = "/contest/:id/moderation",
+  PRODUCER_APPLICATION = "/producer-applications",
+  PRODUCER_APPLICATION_BY_ID = "/producer-applications/:id",
+  PRODUCER_APPLICATION_CONFIRM = "/producer-applications/:id/confirm",
   PAGE = "/pages",
   PAGE_BY_ID = "/pages/:id",
   CHAPTER = "/chapters",
@@ -395,6 +398,26 @@ export class API {
   ) => {
     const url = API.URLS.CONTEST_WINNER_BY_BOOK_ID.replace(":id", id);
     return await API.get(url, params);
+  };
+
+  public static getProducerApplications = async (params: QueryParams = {}) => {
+    const url = API.URLS.PRODUCER_APPLICATION;
+    return await API.get(url, params);
+  };
+
+  public static createProducerApplication = async (body: any) => {
+    const url = API.URLS.PRODUCER_APPLICATION;
+    return await API.post(url, body);
+  };
+
+  public static confirmProducerApplication = async (id: string) => {
+    const url = API.URLS.PRODUCER_APPLICATION_CONFIRM.replace(":id", id);
+    return await API.post(url, {});
+  };
+
+  public static removeProducerApplication = async (id: string) => {
+    const url = API.URLS.PRODUCER_APPLICATION_BY_ID.replace(":id", id);
+    return await API.delete(url);
   };
 
   public static getApplications = async (params: QueryParams = {}) => {
