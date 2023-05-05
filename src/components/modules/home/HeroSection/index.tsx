@@ -6,8 +6,6 @@ import slide3 from "./../../../../common/assets/images/big-slider/banner-light-3
 import slide4 from "./../../../../common/assets/images/big-slider/banner-light-4.png";
 
 import "./animation.css";
-import { Link } from "react-router-dom";
-import { Button } from "../../../ui/buttons/Button";
 import { useUserContext } from "../../../context/userContext";
 import { PrimaryLink } from "../../../ui/PrimaryLink";
 import { Router } from "../../../router";
@@ -40,7 +38,7 @@ const HeroSection = () => {
           {benefits.map((item) => (
             <div
               key={item}
-              className="w-1/3 text-sm text-white sm:text-base sm:text-lg"
+              className="w-1/3 text-sm text-white sm:text-lg"
             >
               {item}
             </div>
