@@ -11,6 +11,8 @@ import {
   getPageCount,
 } from "../../../../utils/pageUtils";
 import { PaginationPanel } from "../../../ui/PaginationPanel";
+import { Link } from "react-router-dom";
+import { Router } from "../../../router";
 
 export const AdminBooksPage = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -46,7 +48,10 @@ export const AdminBooksPage = () => {
                       key={i}
                       className="flex items-center justify-between border-b-2 pb-2"
                     >
-                      <div className="flex text-lg">
+                      <Link
+                        to={`${Router.absoluteBooks}/${id}`}
+                        className="flex text-lg"
+                      >
                         <img
                           className="mr-5 h-32 w-32 object-cover"
                           src={processImage(img)}
@@ -58,7 +63,7 @@ export const AdminBooksPage = () => {
                           <div>{chapters?.length} глав</div>
                           <div className="line-clamp-2">{description}</div>
                         </div>
-                      </div>
+                      </Link>
                       <div className="w-1/4 justify-between lg:flex">
                         <Button onClick={() => verifyBook(`${id}`)}>
                           Верифицировать

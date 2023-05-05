@@ -12,6 +12,8 @@ import {
   getOffset,
   getPageCount,
 } from "../../../../utils/pageUtils";
+import { Link } from "react-router-dom";
+import { Router } from "../../../router";
 
 export const AdminHomePage = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -62,7 +64,10 @@ export const AdminHomePage = () => {
                   key={i}
                   className="flex items-center justify-between border-b-2 pb-2"
                 >
-                  <div className="flex text-lg">
+                  <Link
+                    to={`${Router.users}/${id}`}
+                    className="flex text-lg"
+                  >
                     <img
                       className="mr-5 h-32 w-32 object-cover"
                       src={processImage(img)}
@@ -74,7 +79,7 @@ export const AdminHomePage = () => {
                       <div>{email}</div>
                       <div className="line-clamp-2">{autobiography}</div>
                     </div>
-                  </div>
+                  </Link>
                   <div>
                     <Button
                       onClick={() => {
