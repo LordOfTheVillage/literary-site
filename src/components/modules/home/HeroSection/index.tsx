@@ -9,6 +9,8 @@ import "./animation.css";
 import { Link } from "react-router-dom";
 import { Button } from "../../../ui/buttons/Button";
 import { useUserContext } from "../../../context/userContext";
+import { PrimaryLink } from "../../../ui/PrimaryLink";
+import { Router } from "../../../router";
 
 const benefits = [
   "Все популярные жанры: боевики, фэнтези, фантастика и другие",
@@ -27,7 +29,7 @@ const HeroSection = () => {
             background: `url(${item}) center`,
             animation: `item${index + 1} 10s linear infinite`,
           }}
-          className="absolute top-0 left-0 h-full w-full bg-cover"
+          className="absolute left-0 top-0 h-full w-full bg-cover"
         />
       ))}
       <Wrapper className="absolute ">
@@ -45,9 +47,9 @@ const HeroSection = () => {
           ))}
         </div>
         {!isUserLogged && (
-          <Link to="/registration">
-            <Button className="lg:text-lg">Присоединиться</Button>
-          </Link>
+          <PrimaryLink path={`${Router.register}`} className="lg:text-lg">
+            Присоединиться
+          </PrimaryLink>
         )}
       </Wrapper>
     </div>
